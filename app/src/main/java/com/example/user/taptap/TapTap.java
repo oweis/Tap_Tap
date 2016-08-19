@@ -149,10 +149,7 @@ public class TapTap extends AppCompatActivity implements View.OnClickListener {
     }.start();}
 
     public Boolean assertButtonWhite(int buttonNumero) {
-        if (buttonNumero == whiteButtonNumber) {
-            return true;
-        }
-        return false;
+        return buttonNumero == whiteButtonNumber;
     }
 
     public void makeButtonWhite(int buttonNumero) {
