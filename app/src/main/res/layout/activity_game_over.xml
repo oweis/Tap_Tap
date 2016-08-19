@@ -17,20 +17,11 @@
         android:textColor="#000000"
         android:id="@+id/textViewGameOver"
         android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start Tapping Again !!!"
-        android:id="@+id/button"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_marginLeft="50dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="30dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Score : "
         android:id="@+id/textViewScoreText"
@@ -38,7 +29,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="70dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="score"
         android:id="@+id/textViewScore"
@@ -47,8 +38,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:layout_marginLeft="50dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="30dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Message : "
         android:id="@+id/textViewMessageText"
@@ -56,10 +47,45 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="100dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="message"
         android:id="@+id/textViewMessage"
         android:layout_toRightOf="@+id/textViewMessageText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonEasy"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="TAP TAPING AGAIN ?!"
+            android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Easy"
+        android:id="@+id/buttonEasy"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Normal"
+        android:id="@+id/buttonNormal"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/buttonEasy"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Hard"
+        android:id="@+id/buttonHard"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/buttonNormal"/>
 
 </RelativeLayout>

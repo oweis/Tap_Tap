@@ -7,7 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class GameOver extends AppCompatActivity {
+public class GameOver extends AppCompatActivity implements View.OnClickListener {
+    Button buttonEasy,buttonNormal,buttonHard;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,15 +21,35 @@ public class GameOver extends AppCompatActivity {
 
         textViewScore.setText(Integer.toString(score));
         textViewMessage.setText(message);
+        buttonEasy = (Button) findViewById(R.id.buttonEasy);
+        buttonNormal = (Button) findViewById(R.id.buttonNormal);
+        buttonHard = (Button) findViewById(R.id.buttonHard);
 
-        Button button = (Button) findViewById(R.id.button);
+        buttonEasy.setOnClickListener(this);
+        buttonNormal.setOnClickListener(this);
+        buttonHard.setOnClickListener(this);
 
-        button.setOnClickListener(new View.OnClickListener(){
+    }
 
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(GameOver.this,TapTap.class));
-            }
-        });
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.buttonEasy :
+                createTapTapAndPassLevel(3000);
+                break;
+            case R.id.buttonNormal :
+                createTapTapAndPassLevel(2000);
+                break;
+            case R.id.buttonHard :
+                createTapTapAndPassLevel(1000);
+                break;
+        }
+
+    }
+
+    public void createTapTapAndPassLevel(int millis){
+        Intent intent = new Intent(GameOver.this, TapTap.class);
+        intent.putExtra("millis",millis);
+        startActivity(intent);
     }
 }

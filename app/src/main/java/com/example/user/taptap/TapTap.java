@@ -19,9 +19,10 @@ public class TapTap extends AppCompatActivity implements View.OnClickListener {
 
 
     private int whiteButtonNumber = 1;
-    private CountDownTimer mCountDown;
+    private CountDownTimer mCountDown = null;
     private int score = 0;
-    Button button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11, button12;
+    private int millis;
+    private Button button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11, button12;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,8 @@ public class TapTap extends AppCompatActivity implements View.OnClickListener {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_tap_tap);
+
+         millis =  getIntent().getExtras().getInt("millis");
 
         button1 = (Button) findViewById(R.id.button1);
         button2 = (Button) findViewById(R.id.button2);
@@ -124,14 +127,17 @@ public class TapTap extends AppCompatActivity implements View.OnClickListener {
                 score++;
             }
             else {
+                if(mCountDown != null){mCountDown.cancel();}
                 Intent intent = new Intent(TapTap.this, GameOver.class);
                 intent.putExtra("score",score);
-                intent.putExtra("message","Excuse me sir but are you blind?");
+                intent.putExtra("message","Excuse me sir, but are you blind or something?");
                 startActivity(intent);
             }
     }
 
-    public void restartmCountDown(){  mCountDown = new CountDownTimer(2000, 100) {
+    public void restartmCountDown(){
+        if(mCountDown != null){mCountDown.cancel();}
+        mCountDown = new CountDownTimer(millis, 100) {
 
         @Override
         public void onFinish() {
