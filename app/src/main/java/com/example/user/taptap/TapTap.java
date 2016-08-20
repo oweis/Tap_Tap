@@ -1,10 +1,7 @@
 package com.example.user.taptap;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,7 +12,7 @@ import android.widget.Button;
 
 import java.util.Random;
 
-public class TapTap extends AppCompatActivity implements View.OnClickListener {
+public class TapTap extends AppCompatActivity{
 
 
     private int whiteButtonNumber = 1;
@@ -23,7 +20,6 @@ public class TapTap extends AppCompatActivity implements View.OnClickListener {
     private int score = 0;
     private int millis;
     private Button button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11, button12;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,66 +55,12 @@ public class TapTap extends AppCompatActivity implements View.OnClickListener {
         button11.setBackgroundColor(Color.BLACK);
         button12.setBackgroundColor(Color.BLACK);
 
-        button1.setOnClickListener(this);
-        button2.setOnClickListener(this);
-        button3.setOnClickListener(this);
-        button4.setOnClickListener(this);
-        button5.setOnClickListener(this);
-        button6.setOnClickListener(this);
-        button7.setOnClickListener(this);
-        button8.setOnClickListener(this);
-        button9.setOnClickListener(this);
-        button10.setOnClickListener(this);
-        button11.setOnClickListener(this);
-        button12.setOnClickListener(this);
-
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.button1:
-                makeThisButtonBlackMakeAnotherButtonWhite(1);
-                break;
-            case R.id.button2:
-                makeThisButtonBlackMakeAnotherButtonWhite(2);
-                break;
-            case R.id.button3:
-                makeThisButtonBlackMakeAnotherButtonWhite(3);
-                break;
-            case R.id.button4:
-                makeThisButtonBlackMakeAnotherButtonWhite(4);
-                break;
-            case R.id.button5:
-                makeThisButtonBlackMakeAnotherButtonWhite(5);
-                break;
-            case R.id.button6:
-                makeThisButtonBlackMakeAnotherButtonWhite(6);
-                break;
-            case R.id.button7:
-                makeThisButtonBlackMakeAnotherButtonWhite(7);
-                break;
-            case R.id.button8:
-                makeThisButtonBlackMakeAnotherButtonWhite(8);
-                break;
-            case R.id.button9:
-                makeThisButtonBlackMakeAnotherButtonWhite(9);
-                break;
-            case R.id.button10:
-                makeThisButtonBlackMakeAnotherButtonWhite(10);
-                break;
-            case R.id.button11:
-                makeThisButtonBlackMakeAnotherButtonWhite(11);
-                break;
-            case R.id.button12:
-                makeThisButtonBlackMakeAnotherButtonWhite(12);
-                break;
-            default:
-                break;
-        }
-    }
 
-    public void makeThisButtonBlackMakeAnotherButtonWhite(int buttonNumber) {
+    public void makeThisButtonBlackMakeAnotherButtonWhite(View v) {
+
+        int buttonNumber = Integer.parseInt(v.getTag().toString());
         makeButtonBlack(buttonNumber);
             if (assertButtonWhite(buttonNumber)) {
              whiteButtonNumber = randomNumber();
@@ -152,10 +94,7 @@ public class TapTap extends AppCompatActivity implements View.OnClickListener {
     }.start();}
 
     public Boolean assertButtonWhite(int buttonNumero) {
-        if (buttonNumero == whiteButtonNumber) {
-            return true;
-        }
-        return false;
+        return buttonNumero == whiteButtonNumber;
     }
 
     public void makeButtonWhite(int buttonNumero) {
@@ -174,9 +113,8 @@ public class TapTap extends AppCompatActivity implements View.OnClickListener {
             randomNumber();
         }
         return randomNumber;
+
     }
-
-
     public Button findButton(int buttonNumero) {
         Button btn = null;
 
@@ -222,7 +160,12 @@ public class TapTap extends AppCompatActivity implements View.OnClickListener {
         }
 
         return btn;
+
     }
+
+
+
+
 
 
 }
